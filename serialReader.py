@@ -15,6 +15,8 @@ lastReset = 0
 cache = open('data.csv', 'r+')
 cache.truncate(0)
 time.sleep(2)
+print("I'm alive")
+sys.stdout.flush()
 with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
    while 1:
 
