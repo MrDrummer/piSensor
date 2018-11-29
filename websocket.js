@@ -3,7 +3,7 @@ var http = require('http');
 var express = require('express');
 var WSS = require('ws').Server;
 
-var app = express().use(express.static('public'));
+var app = express().use(express.static('web'));
 var server = http.createServer(app);
 server.listen(8080, '127.0.0.1');
 
