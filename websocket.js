@@ -10,6 +10,7 @@ server.listen(8080, '0.0.0.0');
 var wss = new WSS({ port: 8081 });
 wss.on('connection', function(socket) {
   console.log('Connection started');
+  console.log(wss.clients.length)
 
   var json = JSON.stringify({ success: true });
   socket.send(json);
@@ -36,7 +37,7 @@ var broadcast = function(data) {
   var json = JSON.stringify({
     data: data
   });
-
+  console.log(wss.clients.length)
   wss.clients.forEach(function each(client) {
     console.log('Sent: ' + json);
     client.send(json);

@@ -1,6 +1,7 @@
 
 var socket = new WebSocket('ws://192.168.1.12:8081/')
 socket.onopen = function(event) {
+  console.log("websocket opened")
   var json = JSON.stringify({ message: 'ready' })
   socket.send(json)
 }
@@ -18,5 +19,6 @@ socket.onclose = function(event) {
 }
 
 window.addEventListener('beforeunload', function() {
+  console.log("websocket closed")
   socket.close()
 })
