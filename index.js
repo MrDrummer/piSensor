@@ -13,9 +13,12 @@ let startSerial = async function() {
     //   }
     // },1000)
 
-    var exec = require('child_process').exec
-    // var child = spawn(command, args)
-    var child = exec("python 'serialReader.py'")
+    // var exec = require('child_process').exec
+    // // var child = spawn(command, args)
+    // var child = exec("python 'serialReader.py'")
+
+    const spawn = require("child_process").spawn;
+    const child = spawn('python',"serialReader.py"]);
 
     child.stdout.on('data', function(data) {
       console.log("data", data)
