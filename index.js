@@ -10,6 +10,7 @@ let pyshell = new PythonShell('serialReader.py');
 
 pyshell.on('message', function (message) {
   console.log(Date.now(), ":", message);
+  broadcast(message)
 });
 
 // end the input stream and allow the process to exit
