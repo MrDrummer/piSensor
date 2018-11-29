@@ -6,23 +6,16 @@ socket.onopen = function(event) {
 }
 
 socket.onerror = function(event) {
+  console.log(event)
 }
 
 socket.onmessage = function (event) {
+  console.log(event)
 }
 
 socket.onclose = function(event) {
+  console.log(event)
 }
-
-document.querySelector('#close').addEventListener('click', function(event) {
-  socket.close()
-})
-
-document.querySelector('#send').addEventListener('click', function(event) {
-  var json = JSON.stringify({ message: 'Hey there' })
-  socket.send(json)
-})
-
 
 window.addEventListener('beforeunload', function() {
   socket.close()

@@ -5,18 +5,18 @@ var WSS = require('ws').Server;
 
 var app = express().use(express.static('web'));
 var server = http.createServer(app);
-server.listen(8080, '127.0.0.1');
+server.listen(8080, '0.0.0.0');
 
 var wss = new WSS({ port: 8081 });
 wss.on('connection', function(socket) {
-  console.log('Opened Connection');
+  console.log('Connection started');
 
   var json = JSON.stringify({ success: true });
   socket.send(json);
   console.log('Sent: ' + json);
 
   socket.on('message', function(message) {
-    console.log('Received: ' + message);
+    console.log('from client: ' + message);
 
     wss.clients.forEach(function each(client) {
       var json = JSON.stringify({ message: 'Something changed' });
@@ -26,14 +26,14 @@ wss.on('connection', function(socket) {
   });
 
   socket.on('close', function() {
-    console.log('Closed Connection 😱');
+    console.log('Connection closed');
   });
 
 });
 
-var broadcast = function() {
+var broadcast = function(data) {
   var json = JSON.stringify({
-    message: 'Hello hello!'
+    data: data
   });
 
   wss.clients.forEach(function each(client) {

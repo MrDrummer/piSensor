@@ -18,7 +18,7 @@ let startSerial = async function() {
     var child = exec("python 'serialReader.py'")
 
     child.stdout.on('data', function(data) {
-
+      broadcast(data)
     })
     child.stderr.on('data', function(data) {
       console.error('stderr: ' + data.toString())
