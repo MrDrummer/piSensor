@@ -95,6 +95,8 @@ jsonDict = {
                # soil light temp humidity
             final = ",".join(dictAverage)
             print(final)
+            sys.stdout.flush()
+            
             """
 dictAverage = {
    'light': 10.15,
