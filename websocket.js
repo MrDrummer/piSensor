@@ -13,7 +13,7 @@ wss.on('connection', function(socket) {
 
   var json = JSON.stringify({ success: true })
   socket.send(json)
-  
+
   broadcast(wss.clients.length, "clients")
   console.log('Sent: ' + json)
 
@@ -28,12 +28,11 @@ wss.on('connection', function(socket) {
 })
 
 var broadcast = function(data, key = "data") {
-  console.log("broadcast called!")
+  console.log("Sending", data, "to all " + wss.clients.length + "clients.")
   let dataJSON = {}
   dataJSON[key] = data
   var json = JSON.stringify(dataJSON)
   wss.clients.forEach(function each(client) {
-    console.log('Sent: ' + json)
     client.send(json)
   })
 }
