@@ -14,8 +14,9 @@
   "homepage": "https://github.com/markbrown4/websockets#readme",
   "description": "",
   "dependencies": {
-    "python-shell": "^1.0.6",
     "express": "^4.13.4",
+    "lowdb": "^1.0.0",
+    "python-shell": "^1.0.6",
     "ws": "^1.1.0"
   }
 }
