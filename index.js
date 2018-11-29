@@ -1,5 +1,10 @@
 let { wss,  broadcast } = require("./websocket.js")
 
+function processData(data) {
+  const buf = Buffer.from(data)
+  buf.toString('utf8');
+}
+
 let startSerial = async function() {
   let instance = new Promise((resolve, reject) => {
 
@@ -21,8 +26,8 @@ let startSerial = async function() {
     const child = spawn('python',["serialReader.py"]);
 
     child.stdout.on('data', function(data) {
-      console.log("data", data)
-      broadcast(data)
+      console.log("data", processData(data))
+      broadcast(processData(data))
     })
     child.stderr.on('data', function(data) {
       console.error('stderr: ' + data.toString())
@@ -32,6 +37,7 @@ let startSerial = async function() {
 
     child.on('close', function(code) {
       // clearInterval(check)
+      console.error(code)
       resolve(code)
     })
   })
