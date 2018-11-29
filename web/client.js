@@ -15,7 +15,7 @@ socket.onmessage = function (event) {
   let response = (JSON.parse(event.data))
   if (response.data) {
     data = response.data.split(",")
-    document.getElementById("data").innerHTML = "Unix: " + data[0] + " Soil: " + data[1] + " Temperature: " + data[2] + " Humidity: " + data[3] + " Light: " + data[4]
+    document.getElementById("data").innerHTML = "Unix: " + data[0] + " Soil: " + data[1] + " Temperature: " + data[2] + " Light: " + data[3] + " Humidity: " + data[4]
   } else if (response.clients) {
     document.getElementById("clients").innerHTML = "Clients connected: " + data.clients
   } else {
