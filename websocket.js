@@ -37,8 +37,8 @@ var broadcast = function(data) {
   });
 
   wss.clients.forEach(function each(client) {
-    client.send(json);
     console.log('Sent: ' + json);
+    client.send(json);
   });
 }
 

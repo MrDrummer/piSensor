@@ -1,5 +1,5 @@
 
-var socket = new WebSocket('ws://localhost:8081/')
+var socket = new WebSocket('ws://192.168.1.12:8081/')
 socket.onopen = function(event) {
   var json = JSON.stringify({ message: 'ready' })
   socket.send(json)
