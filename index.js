@@ -6,7 +6,7 @@ broadcast("A test broadcast to all listening devices!")
 
 console.log(Date.now(), ":", "spooling up")
 let {PythonShell} = require('python-shell');
-let pyshell = new PythonShell('process.py');
+let pyshell = new PythonShell('serialReader.py');
 
 pyshell.on('message', function (message) {
   console.log(Date.now(), ":", message);
