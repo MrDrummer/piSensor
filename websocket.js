@@ -32,6 +32,7 @@ wss.on('connection', function(socket) {
 });
 
 var broadcast = function(data) {
+  console.log("broadcast called!")
   var json = JSON.stringify({
     data: data
   });
