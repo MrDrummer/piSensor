@@ -1,4 +1,4 @@
-import time, string, serial, datetime, json, os
+import time, string, serial, datetime, json, os, sys
 
 
 sensors = ["light", "temperature", "humidity", "soil"]
