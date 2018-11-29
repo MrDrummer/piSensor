@@ -41,4 +41,5 @@ var broadcast = function() {
     console.log('Sent: ' + json);
   });
 }
-setInterval(broadcast, 3000);
+
+module.exports = { wss, broadcast }
