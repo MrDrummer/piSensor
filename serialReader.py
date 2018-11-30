@@ -37,7 +37,7 @@ with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
          timeObj = datetime.datetime.now()
          # print(str(time.minute) + ":" + str(time.second))
          cache.write(data + "||")
-         # print(str(timeObj.hour) + ":" + str(timeObj.minute) + ":" + str(timeObj.second) + ",", data)
+         print(str(timeObj.hour) + ":" + str(timeObj.minute) + ":" + str(timeObj.second) + ",", (data.replace(",", " | ")))
          # cache.close()
          cache.flush()
 
