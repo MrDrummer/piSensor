@@ -48,7 +48,8 @@ async function populateData() {
 }
 
 function updateValues (data) {
-  document.getElementById("data").innerHTML = "Time: " + unixToTime((Object.keys(data))[0]) + " Light: " + data.light + " Temperature: " + data.temp + " Humidity: " + data.humidity + " Soil: " + data.soil
+  let key = (Object.keys(data))[0]
+  document.getElementById("data").innerHTML = "Time: " + unixToTime(key) + " Light: " + data.key.light + " Temperature: " + data.key.temp + " Humidity: " + data.key.humidity + " Soil: " + data.key.soil
 }
 
 populateData()
