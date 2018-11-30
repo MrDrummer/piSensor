@@ -31,7 +31,7 @@ pyshell.end(function (err, code, signal) {
 let convertData = function (data) {
   let split = data.split(",")
   console.log("split:", typeof split, split)
-  if (typeof split === "undefined") return false
+  if (split.length !== 5) return false
   /*
     light
     temp
