@@ -25,6 +25,7 @@ socket.onmessage = function (event) {
 
 socket.onclose = function(event) {
   console.log(event)
+  document.getElementById("clients").innerHTML = "Disconnected from server. Try Refreshing."
 }
 
 window.addEventListener('beforeunload', function() {

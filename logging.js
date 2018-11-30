@@ -6,10 +6,10 @@ const db = low(adapter)
 db.defaults({data: {}})
   .write()
 
-  let write = async function(data) {
-    await db.get("data")
-      .push(data)
-      .write()
-  }
+let writeData = async function(data) {
+  await db.get("data")
+    .push(data)
+    .write()
+}
 
-module.exports = { write }
+module.exports = { writeData }
