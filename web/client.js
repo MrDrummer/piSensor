@@ -39,7 +39,10 @@ function unixToTime(t) {
   var s = "0" + dt.getSeconds();
   return hr+ ':' + m.substr(-2) + ':' + s.substr(-2);  
 }
+async function populateData() {
+  let response = await fetch("data.json");
+  let parsed = await response.json();
+  console.log("parsed", parsed)
+}
 
-let response = await fetch("data.json");
-let parsed = await response.json();
-console.log("parsed", parsed)
+populateData()
