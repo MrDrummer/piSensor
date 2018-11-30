@@ -29,7 +29,8 @@ with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
 
          data = line.strip().decode('ascii')
          if len(data.split(",")) != 4:
-            # print("invalid data", data)
+            print("invalid data", data)
+            sys.stdout.flush()
             continue
          # END VALIDATE
 
@@ -40,6 +41,7 @@ with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
          print(str(timeObj.hour) + ":" + str(timeObj.minute) + ":" + str(timeObj.second) + ",", (data.replace(",", " | ")))
          # cache.close()
          cache.flush()
+         sys.stdout.flush()
 
          # If the current minute is a multiple of the code frequency
          # and we are in a different minute from the last
@@ -73,10 +75,13 @@ sensorData = ['11', '23.80', '62.20', '99']
 
                   # If we have the sensor name in the dictionary,
                   # append the sensor value, otherwise add the key and value
-                  if sensors[sensorIndex] in jsonDict.keys():
-                     jsonDict[sensors[sensorIndex]].append(float(sensorValue))
-                  else:
-                     jsonDict[sensors[sensorIndex]] = [float(sensorValue)]
+                  try:
+                     if sensors[sensorIndex] in jsonDict.keys():
+                        jsonDict[sensors[sensorIndex]].append(float(sensorValue))
+                     else:
+                        jsonDict[sensors[sensorIndex]] = [float(sensorValue)]
+                  except Exception as e:
+                     print("ERROR! sensorValue type:", type(sensorValue))
 
 ##            print("jsonDict", jsonDict)
             """
@@ -136,4 +141,5 @@ dictAverage = {
             cache.truncate(0)
       except Exception as e:
          print("Whoopsie!: ", e)
+         sys.stdout.flush()
 
