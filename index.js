@@ -8,9 +8,15 @@ let {PythonShell} = require('python-shell');
 let pyshell = new PythonShell('serialReader.py');
 
 pyshell.on('message', function (message) {
-  console.log(Date.now(), ":", message, convertData(message));
-  broadcast(convertData(message))
-  writeData(convertData(message))
+  console.log(Date.now(), ":", message);
+
+  let converted = convertData(message)
+
+  if (!converted) return
+
+  console.log("Data converted:", converted)
+  broadcast(converted)
+  writeData(converted)
 });
 
 // end the input stream and allow the process to exit
@@ -24,7 +30,7 @@ pyshell.end(function (err, code, signal) {
 
 let convertData = function (data) {
   let split = data.split(",")
-  if (typeof split === "undefined") return data
+  if (typeof split === "undefined") return false
   /*
     light
     temp
