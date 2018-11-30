@@ -29,8 +29,8 @@ with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
 
          data = line.strip().decode('ascii')
          if len(data.split(",")) != 4:
-            print("invalid data", data)
-            sys.stdout.flush()
+            # print("invalid data", data)
+            # sys.stdout.flush()
             continue
          # END VALIDATE
 
@@ -38,10 +38,10 @@ with serial.Serial('/dev/ttyACM0', 9600, timeout=5) as ser:
          timeObj = datetime.datetime.now()
          # print(str(time.minute) + ":" + str(time.second))
          cache.write(data + "||")
-         print(str(timeObj.hour) + ":" + str(timeObj.minute) + ":" + str(timeObj.second) + ",", (data.replace(",", " | ")))
+         # print(str(timeObj.hour) + ":" + str(timeObj.minute) + ":" + str(timeObj.second) + ",", (data.replace(",", " | ")))
+         # sys.stdout.flush()
          # cache.close()
          cache.flush()
-         sys.stdout.flush()
 
          # If the current minute is a multiple of the code frequency
          # and we are in a different minute from the last
