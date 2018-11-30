@@ -43,7 +43,7 @@ let convertData = function (data) {
   */
 
   let out = {}
-  out["_" + split[0]] = {
+  out[split[0]] = {
     "light": split[1],
     "temp": split[2],
     "humidity": split[3],
