@@ -76,7 +76,7 @@ sensorData = ['11', '23.80', '62.20', '99']
                   if sensors[sensorIndex] in jsonDict.keys():
                      jsonDict[sensors[sensorIndex]].append(float(sensorValue))
                   else:
-                      jsonDict[sensors[sensorIndex]] = [float(sensorValue)]
+                     jsonDict[sensors[sensorIndex]] = [float(sensorValue)]
 
 ##            print("jsonDict", jsonDict)
             """
@@ -89,7 +89,7 @@ jsonDict = {
             """
             
             # Getting the average of each sensor
-            for index, sensor in enumerate(jsonDict):
+            for index, sensor in enumerate(sensors): # jsonDict
                average = round(sum(jsonDict[sensor]) / len(jsonDict[sensor]), 2)
 ##               dictAverage[sensor] = average
                dictAverage.append(str(average))
