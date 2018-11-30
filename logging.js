@@ -7,6 +7,7 @@ db.defaults({data: {}})
   .write()
 
 let writeData = async function(data) {
+  console.log("data:", typeof data, data)
   await db.get("data")
     .push(data)
     .write()

@@ -15,7 +15,7 @@ socket.onmessage = function (event) {
   let response = (JSON.parse(event.data))
   if (response.data) {
     data = response.data.split(",")
-    document.getElementById("data").innerHTML = "Time: " + unixToTime(data[0]) + " Soil: " + data[1] + " Temperature: " + data[2] + " Light: " + data[3] + " Humidity: " + data[4]
+    updateValues(data)
   } else if (response.clients) {
     document.getElementById("clients").innerHTML = "Clients connected: " + response.clients
   } else {
@@ -45,6 +45,10 @@ async function populateData() {
   let response = await fetch("data.json");
   let parsed = await response.json();
   console.log("parsed", parsed)
+}
+
+function updateValues (data) {
+  document.getElementById("data").innerHTML = "Time: " + unixToTime((Object.keys(data))[0]) + " Light: " + data.light + " Temperature: " + data.temp + " Humidity: " + data.humidity + " Soil: " + data.soil
 }
 
 populateData()

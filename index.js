@@ -30,9 +30,9 @@ pyshell.end(function (err, code, signal) {
 
 let convertData = function (data) {
   let split = data.split(",")
-  console.log("split:", typeof split, split)
+  // console.log("split:", typeof split, split)
   if (split.length !== 5) {
-    console.log("failed:", split)
+    console.error("failed:", split)
     return false
   }
   /*
@@ -46,7 +46,7 @@ let convertData = function (data) {
   out[split[0]] = {
     "light": split[1],
     "temp": split[2],
-    "moisture": split[3],
+    "humidity": split[3],
     "soil": split[4]
   }
   console.log("out", out)
