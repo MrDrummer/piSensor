@@ -24,6 +24,7 @@ pyshell.end(function (err, code, signal) {
 
 let convertData = function (data) {
   let split = data.split(",")
+  if (typeof split === "undefined") return data
   /*
     light
     temp
