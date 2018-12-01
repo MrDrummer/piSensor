@@ -8,8 +8,8 @@ db.defaults({data: {}})
 
 let writeData = async function(data) {
   console.log("data:", typeof data, data)
-  await db.get("data")
-    .push(data)
+  let unixTimestamp = (Object.keys(data))[0]
+  await db.set("data." + unixTimestamp, data[unixTimestamp])
     .write()
 }
 
