@@ -1,3 +1,8 @@
+# import time, sys
+# while True:
+#    print(str(int(time.time())), ",8.8,20.6,68.1,9.0")
+#    sys.stdout.flush()
+#    time.sleep(60)
 import time, string, serial, datetime, json, os, sys
 
 

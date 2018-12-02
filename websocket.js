@@ -28,7 +28,7 @@ wss.on('connection', function(socket) {
 })
 
 var broadcast = function(data, key = "data") {
-  console.log("Sending", data, "to all " + wss.clients.length + "clients.")
+  console.log("Sending", data, "to all " + wss.clients.length + " clients.")
   let dataJSON = {}
   dataJSON[key] = data
   var json = JSON.stringify(dataJSON)

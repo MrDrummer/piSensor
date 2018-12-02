@@ -1,32 +1,35 @@
 let { wss,  broadcast } = require("./websocket.js")
 let { writeData } = require("./logging")
+let config = require("./config.json")
 
 broadcast("A test broadcast to all listening devices!")
 
 console.log(Date.now(), ":", "spooling up")
-let {PythonShell} = require('python-shell');
-let pyshell = new PythonShell('serialReader.py');
+if (!config.dev) {
+  let {PythonShell} = require('python-shell')
+  let pyshell = new PythonShell('serialReader.py')
 
-pyshell.on('message', function (message) {
-  console.log(Date.now(), ":", message);
+  pyshell.on('message', function (message) {
+    console.log(Date.now(), ":", message)
 
-  let converted = convertData(message)
+    let converted = convertData(message)
 
-  if (!converted) return
+    if (!converted) return
 
-  console.log("Data converted:", converted)
-  broadcast(converted)
-  writeData(converted)
-});
+    console.log("Data converted:", converted)
+    broadcast(converted)
+    writeData(converted)
+  })
 
-// end the input stream and allow the process to exit
-pyshell.end(function (err, code, signal) {
-  if (err) throw err;
-  console.log('The exit code was: ' + code);
-  console.log('The exit signal was: ' + signal);
-  console.log('finished');
-  console.log('finished');
-});
+  // end the input stream and allow the process to exit
+  pyshell.end(function (err, code, signal) {
+    if (err) throw err
+    console.log('The exit code was: ' + code)
+    console.log('The exit signal was: ' + signal)
+    console.log('finished')
+    console.log('finished')
+  })
+}
 
 let convertData = function (data) {
   let split = data.split(",")
@@ -38,16 +41,16 @@ let convertData = function (data) {
   /*
     light
     temp
-    moisture
+    humidity
     soil
   */
 
   let out = {}
   out[split[0]] = {
-    "light": split[1],
-    "temp": split[2],
-    "humidity": split[3],
-    "soil": split[4]
+    "light": parseInt(split[1]),
+    "temp": parseInt(split[2]),
+    "humidity": parseInt(split[3]),
+    "soil": parseInt(split[4])
   }
   console.log("out", out)
   return out

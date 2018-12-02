@@ -3,10 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      #chartWrapper {
+        position: relative;
+      }
+
+      #chartWrapper > canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* pointer-events:none; */
+      }
+      #chartAreaWrapper {
+        width: 100vw;
+        overflow-x: scroll;
+      }
+    </style>
   </head>
   <body>
-      <div id="data"></div>
-      <div id="clients"></div>
+    <div id="data"></div>
+    <div id="clients"></div>
+    <!-- <div id="chartAreaWrapper"> -->
+      <!-- <div id="chartWrapper"> -->
+        <canvas id="myChart" height="300" width="1200"></canvas>
+      <!-- </div> -->
+      <!-- <canvas id="myChartAxis" height="300" width="0"></canvas> -->
+    <!-- </div> -->
+    <!-- <textarea id="debugoutput"></textarea> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="client.js"></script>
   </body>
 </html>
