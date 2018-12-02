@@ -50,6 +50,7 @@ async function populateData() {
 }
 
 function updateValues (data) {
+  console.log("updateValues called", data)
   let key = (Object.keys(data))[0]
   sensorData[key] = data[key]
   updateChart(data)
@@ -146,6 +147,7 @@ function initChart() {
 //   "soil": "9.0"
 // }
 function updateChart(data) {
+  console.log("updateChart called", data)
   let unix = Object.keys(data)[0]
   let unixInt = parseInt(unix)
   let sensorData = data[unix]
