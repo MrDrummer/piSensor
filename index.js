@@ -47,10 +47,10 @@ let convertData = function (data) {
 
   let out = {}
   out[split[0]] = {
-    "light": parseInt(split[1]),
-    "temp": parseInt(split[2]),
-    "humidity": parseInt(split[3]),
-    "soil": parseInt(split[4])
+    "light": parseFloat(split[1]),
+    "temp": parseFloat(split[2]),
+    "humidity": parseFloat(split[3]),
+    "soil": parseFloat(split[4])
   }
   console.log("out", out)
   return out
