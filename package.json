@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "lowdb": "^1.0.0",
+    "moment": "^2.23.0",
     "python-shell": "^1.0.6",
     "ws": "^1.1.0"
   }

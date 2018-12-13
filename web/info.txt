@@ -1,0 +1,2 @@
+highest, average and lowest for all sensors for each day & times
+
